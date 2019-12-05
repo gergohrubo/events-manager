@@ -65,7 +65,24 @@ export const deleteEvent = id => (dispatch, getState) => {
     })
 }
 
-const eventDeleted = event => ({
+const eventDeleted = id => ({
   type: EVENT_DELETE_SUCCESS,
-  event
+  id
+})
+
+export const EVENT_UPDATED = 'EVENT_UPDATED'
+
+export const updateEvent = (id, data) => (dispatch, getState) => {
+  request
+    .put(`${baseUrl}/event/${id}`)
+    .send(data)
+    .then(response => {
+      dispatch(eventUpdated(id, data))
+    })
+}
+
+const eventUpdated = (id, data) => ({
+  type: EVENT_UPDATED,
+  id,
+  data
 })

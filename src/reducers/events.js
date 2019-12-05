@@ -13,7 +13,7 @@ export default function eventReducer(state = initialState, action) {
       return state
     case EVENT_DELETE_SUCCESS:
       const newState = [...state]
-      return newState.filter(event => event.id !== action.event)
+      return newState.filter(event => event.id !== action.id)
     default:
       return state
   }
